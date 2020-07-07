@@ -193,6 +193,29 @@
                     </execution>
                 </executions>
             </plugin>
+           <plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<configuration>
+					<from>
+						<image>gcr.io/distroless/java</image>
+					</from>
+					<to>
+						<image>registry.gitlab.com/${env.CI_PROJECT_NAMESPACE}/${env.CI_PROJECT_NAME}/${env.PROJECT_NAME}:${env.CI_PIPELINE_ID}</image>
+						<auth>
+							<username>gitlab-ci-token</username>
+							<password>${env.CI_BUILD_TOKEN}</password>
+						</auth>
+					</to>
+					<container>
+						<useCurrentTimestamp>true</useCurrentTimestamp>
+					</container>
+					<ports>
+						<port>8080</port>
+					</ports>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 
